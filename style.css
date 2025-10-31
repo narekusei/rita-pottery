@@ -1,0 +1,193 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    /* background-color: #F5F5DC; Beige */
+    /* color: #3D2B1F; Dark Brown */
+}
+
+/* Part 1: Main Grid Section */
+#main-part {
+    /* padding: 2rem; */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Set a fixed height for rows to make the grid predictable */
+    grid-auto-rows: 250px; 
+    /* gap: 1rem; */
+}
+
+/* Make all grid items flex containers to control the content inside */
+.grid-item {
+    display: flex;
+    overflow: hidden; /* Hide anything that spills out */
+    background-color: #DEB887; /* Burlywood Brown */
+    /* border-radius: 5px; */
+}
+
+/* Default image styling to fill its container */
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    /* This is key: it scales the image to fill the box, cropping as needed, without distortion. */
+    object-fit: cover; 
+    object-position: center; /* Center the image within its box */
+}
+
+/* Large item on the left */
+.grid-item-large {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    flex-direction: column; /* Stack image and text vertically */
+}
+
+.grid-item-large .image-container {
+    flex-grow: 1; /* Allows the image container to take up available space */
+    overflow: hidden; /* Keep the image contained */
+}
+
+.grid-item-large .text-content {
+    padding: 1rem;
+    flex-shrink: 0; /* Prevent the text box from shrinking */
+}
+
+/* Specific grid cell positions */
+.grid-item-small-1 {
+    background-color: #FFD700; /* Gold (Yellow) */
+}
+
+.grid-item-medium {
+    grid-row: span 2;
+    background-color: #DAA520; /* Goldenrod (Yellow/Brown) */
+}
+
+.grid-item-small-2 {
+    grid-column: span 2;
+    background-color: #FFD700; /* Gold (Yellow) */
+}
+
+.grid-item-wide {
+    grid-column: span 3;
+    background-color: #F0E68C; /* Khaki (Yellow/Beige) */
+}
+
+/* Part 2: "Buy Now" Section */
+#buy-now-part {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.background-photo {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(8px);
+    transform: scale(1.1); /* Prevents blurred edges from showing */
+    z-index: -1;
+}
+
+.foreground-content {
+    display: flex;
+    align-items: center;
+    background-color: rgba(245, 245, 220, 0.85); /* Beige with transparency */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.slideshow-container {
+    max-width: 400px;
+    position: relative;
+    margin-right: 2rem;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.mySlides { display: none; }
+.fade { animation: fade 1.5s; }
+@keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+.buy-now-text { text-align: center; }
+.buy-now-text h2 { color: #8B4513; /* Saddle Brown */ }
+
+.etsy-button {
+    display: inline-block;
+    background-color: #FFD700; /* Gold (Yellow) */
+    color: #8B4513; /* Saddle Brown */
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.etsy-button:hover {
+    background-color: #DAA520; /* Goldenrod */
+}
+
+/* Part 3: Background Slideshow Section */
+#background-slideshow-part {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+}
+
+.slideshow li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: imageAnimation 25s linear infinite;
+}
+
+/* You must replace these placeholder images */
+.slideshow li:nth-child(1) { background-image: url(ten.jpg); }
+.slideshow li:nth-child(2) { background-image: url(eleven.jpg); animation-delay: 5s; }
+.slideshow li:nth-child(3) { background-image: url(twelve.jpg); animation-delay: 10s; }
+.slideshow li:nth-child(4) { background-image: url(thirteen.jpg); animation-delay: 15s; }
+.slideshow li:nth-child(5) { background-image: url(fourteen.jpg); animation-delay: 20s; }
+
+@keyframes imageAnimation {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    20% { opacity: 1; }
+    30% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.foreground-text {
+    background-color: rgba(139, 69, 19, 0.7); /* Saddle Brown with transparency */
+    padding: 2rem 4rem;
+    border-radius: 10px;
+}
